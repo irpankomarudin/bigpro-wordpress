@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: wp-service
+  name: wordpress-service
   #namespace: production
 spec:
   ports:
@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wp
+  name: wordpress-deployment
   #namespace: production
 spec:
   selector:
@@ -37,12 +37,12 @@ spec:
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: p-secret-fb
+              name: p-secret-wp
               key: DB_USER
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
-              name: p-secret-fb
+              name: p-secret-wp
               key: DB_PASS
 
 ---
@@ -60,5 +60,5 @@ spec:
       paths:
       #- path: /
       - backend:
-          serviceName: wp-service
+          serviceName: wordpress-service
           servicePort: 80
