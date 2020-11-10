@@ -1,0 +1,64 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: wp-service
+  #namespace: production
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  #type: LoadBalancer
+  selector:
+    app: wp
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp
+  #namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: wp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wp
+    spec:
+      containers:
+      - name: php-wp
+        image: irpank/wp-app:tag
+        ports:
+          - containerPort: 80
+        env:
+        - name: DB_HOST
+          value: "database-app.ch1pzpidls28.ap-northeast-2.rds.amazonaws.com"
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: p-secret-fb
+              key: DB_USER
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: p-secret-fb
+              key: DB_PASS
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wp-ingress
+  #namespace: production
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: blog.komarudins.online
+    http:
+      paths:
+      #- path: /
+      - backend:
+          serviceName: wp-service
+          servicePort: 80
