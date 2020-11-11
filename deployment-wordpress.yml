@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wp
+  name: wordpress-deployment
   #namespace: production
 spec:
   selector:
@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: php-wp
-        image: irpank/wp-app:tag
+        image: irpank/wordpress-app:tag
         ports:
           - containerPort: 80
         env:
