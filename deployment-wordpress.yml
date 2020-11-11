@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: php-wp
-        image: irpank/wp-app:tag
+        image: irpank/wordpress-app:tag
         ports:
           - containerPort: 80
         env:
