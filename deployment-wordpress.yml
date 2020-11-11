@@ -37,12 +37,12 @@ spec:
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: p-secret-fb
+              name: p-secret-wp
               key: DB_USER
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
-              name: p-secret-fb
+              name: p-secret-wp
               key: DB_PASS
 
 ---
