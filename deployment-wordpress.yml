@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: wp-service
+  name: wordpress-service
   #namespace: production
 spec:
   ports:
@@ -60,5 +60,5 @@ spec:
       paths:
       #- path: /
       - backend:
-          serviceName: wp-service
+          serviceName: wordpress-service
           servicePort: 80
