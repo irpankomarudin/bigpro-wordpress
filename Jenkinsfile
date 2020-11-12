@@ -15,7 +15,7 @@ pipeline {
            }
         stage('tagging') {
             steps {
-                sh('sed -i "s/tag/$BUILD_NUMBER/g" deployment-wordpress.yml')
+                sh('sed -i "s/bild/$BUILD_NUMBER/g" deployment-wordpress.yml')
                 }
            }
         //stage('locate namespace') {
@@ -30,7 +30,7 @@ pipeline {
            }        
         stage('deploy') {
             steps {
-                sh('kubectl delete -f deployment-wordpress.yml')
+                //sh('kubectl delete -f deployment-wordpress.yml')
                 sh('kubectl apply -f deployment-wordpress.yml')
                 sh('kubectl apply -f secret-wp.yml')
                 }
