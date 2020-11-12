@@ -24,7 +24,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress-ku
+      app: wordpress-app
       track: stable
   template:
     metadata:
@@ -33,7 +33,7 @@ spec:
         track: stable
     spec:
       containers:
-      - name: wordpress-ku
+      - name: wordpress-app
         image: irpank/wordpress-bp:tag
         ports:
         - containerPort: 80
