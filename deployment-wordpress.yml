@@ -70,7 +70,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: blog.komarudins.online
+  - host: blog-cilsy.komarudins.online
     http:
       paths:
       #- path: /
