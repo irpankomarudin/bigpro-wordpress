@@ -18,11 +18,11 @@ pipeline {
                 sh('sed -i "s/tag/$BUILD_NUMBER/g" deployment-wordpress.yml')
                 }
            }
-        stage('locate namespace') {
-            steps {
-               sh('sed -i "s/default/production/g" deployment-wordpress.yml')
-                 }          
-           }
+        //stage('locate namespace') {
+            //steps {
+               //sh('sed -i "s/default/production/g" deployment-wordpress.yml')
+                 //}          
+           //}
         stage('add domain') {
             steps {
                 sh('sed -i "s/blog.komarudins.online/blog-cilsy.komarudins.online/g" deployment-wordpress.yml')
