@@ -30,7 +30,7 @@ pipeline {
            //}        
         stage('deploy') {
             steps {
-                sh('kubectl delete -f deployment-wordpress.yml')
+                //sh('kubectl delete -f deployment-wordpress.yml')
                 sh('kubectl apply -f deployment-wordpress.yml')
                 sh('kubectl apply -f secret-wp.yml')
                 }
