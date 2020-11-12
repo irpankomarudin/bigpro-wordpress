@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: wordpress-service
-  namespace: default
+  namespace: staging
 spec:
   ports:
   - port: 80
@@ -17,7 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-deployment
-  namespace: default
+  namespace: staging
   labels:
     app: wordpress-app
 spec:
@@ -65,12 +65,12 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: wordpress-ingress
-  namespace: default
+  namespace: staging
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: blog.komarudins.online
+  - host: blog-st.komarudins.online
     http:
       paths:
       #- path: /
