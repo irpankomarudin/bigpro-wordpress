@@ -15,7 +15,7 @@ pipeline {
            }
         stage('tagging') {
             steps {
-                sh('sed -i "s/tag/$BUILD_NUMBER/g" deployment-wordpress.yml')
+                sh('sed -i "s/bild/$BUILD_NUMBER/g" deployment-wordpress.yml')
                 }
            }
         //stage('locate namespace') {
