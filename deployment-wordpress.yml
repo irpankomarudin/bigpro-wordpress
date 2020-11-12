@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: wordpress-app
-        image: irpank/wordpress-bp:tag
+        image: irpank/wordpress-bp:bild
         ports:
         - containerPort: 80
         env:
