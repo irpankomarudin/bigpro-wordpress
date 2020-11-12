@@ -18,19 +18,19 @@ pipeline {
                 sh('sed -i "s/tag/$BUILD_NUMBER/g" deployment-wordpress.yml')
                 }
            }
-        stage('locate namespace') {
-            steps {
-               sh('sed -i "s/default/staging/g" deployment-wordpress.yml')
-                 }          
-           }
-        stage('add domain') {
-            steps {
-                sh('sed -i "s/blog.komarudins.online/blog-st.komarudins.online/g" deployment-wordpress.yml')
-                }
-           }        
+        //stage('locate namespace') {
+            //steps {
+               //sh('sed -i "s/default/staging/g" deployment-wordpress.yml')
+                 //}          
+           //}
+        //stage('add domain') {
+            //steps {
+                //sh('sed -i "s/blog.komarudins.online/blog-st.komarudins.online/g" deployment-wordpress.yml')
+                //}
+           //}        
         stage('deploy') {
             steps {
-                //sh('kubectl delete -f deployment-wordpress.yml')
+                sh('kubectl delete -f deployment-wordpress.yml')
                 sh('kubectl apply -f deployment-wordpress.yml')
                 sh('kubectl apply -f secret-wp.yml')
                 }
