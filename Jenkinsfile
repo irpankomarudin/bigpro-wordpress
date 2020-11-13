@@ -20,14 +20,14 @@ pipeline {
            }
         //stage('locate namespace') {
             //steps {
-               //sh('sed -i "s/default/production/g" deployment-wordpress.yml')
+               //sh('sed -i "s/default/staging/g" deployment-wordpress.yml')
                  //}          
            //}
         //stage('add domain') {
             //steps {
-                //sh('sed -i "s/blog.komarudins.online/blog-cilsy.komarudins.online/g" deployment-wordpress.yml')
-                }
-           }        
+                //sh('sed -i "s/blog.komarudins.online/blog-st.komarudins.online/g" deployment-wordpress.yml')
+                //}
+           //}        
         stage('deploy') {
             steps {
                 //sh('kubectl delete -f deployment-wordpress.yml')
@@ -42,7 +42,7 @@ pipeline {
            }
          stage('show ingress') {
             steps {
-                sh('kubectl get ingress -n=default')
+                sh('kubectl get ingress -n=staging')
                 }
            }        
       }
